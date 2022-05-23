@@ -30,3 +30,6 @@ const endpointCadastro =
         }
         return res.status(405).json({ erro: 'Metodo informado nao e valido' });
     }
+
+
+export default endpointCadastro;     

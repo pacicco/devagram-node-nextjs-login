@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse, NextApiHandler } from 'next';
 import mongoose from 'mongoose';
-import type {RespostaPadraoMsg} from '../types/RespostaPadraoMsg';
+import type { RespostaPadraoMsg } from '../types/RespostaPadraoMsg';
 
 export const conectarMongoDB = (handler: NextApiHandler) =>
     async (req: NextApiRequest, res: NextApiResponse<RespostaPadraoMsg>) => {
@@ -22,10 +22,10 @@ export const conectarMongoDB = (handler: NextApiHandler) =>
         }
 
         mongoose.connection.on('connected', () => console.log('Banco de dados conectado'));
-        mongoose.connection.on('error', error => console.log(`Ocorreu um erro ao conectar com o Banco de Dados`)); 
+        mongoose.connection.on('error', error => console.log(`Ocorreu um erro ao conectar com o Banco de Dados`));
         await mongoose.connect(DB_CONEXAO_STRING);
         //agora posso seguir para o endpoint, pois estou conectado
         //no banco
-        return handler (req,res);
+        return handler(req, res);
 
     }
