@@ -21,7 +21,7 @@ const endpointLogin = async (
 
         if (login === 'admin@admin.com' &&
             senha ===  'Admin@123'){
-                res.status (200).json({msg: 'usuario autenticado com sucesso'});
+                return res.status (200).json({msg: 'usuario autenticado com sucesso'});
             }
 
         const usuarioEncontrado = await UsuarioModel.find({ email: login, senha: md5(senha) });
