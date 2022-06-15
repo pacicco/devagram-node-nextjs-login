@@ -30,7 +30,8 @@ const PesquisaEndpoint
                     { email: { $regex: filtro, $options: 'i' } }]
 
                 });    
-
+                usuariosEncontrados.forEach (e => e.senha = null);
+                return res.status (200).json (usuariosEncontrados);
 
             }
             return res.status(405).json({ erro: 'Metodo informado nao e valido' });
