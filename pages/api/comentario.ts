@@ -5,7 +5,7 @@ import { PublicacaoModel } from "../../models/PublicacacoModel";
 import { UsuarioModel } from "../../models/usuarioModels";
 import type { RespostaPadraoMsg } from "../../types/RespostaPadraoMsg";
 
-const comentarioEndpoint = async (req: NextApiRequest, res: NextApiResponse) => {
+const comentarioEndpoint = async (req: NextApiRequest, res: NextApiResponse<RespostaPadraoMsg>) => {
     try {
         if (req.method === 'PUT'){
             const {userId, id} = req.query;
@@ -32,13 +32,13 @@ const comentarioEndpoint = async (req: NextApiRequest, res: NextApiResponse) => 
 
             publicacao.comentarios.push (comentario);
             await PublicacaoModel.findByIdAndUpdate ({_id: publicacao})
-            return res.status (200).json ({msg: 'comentario adicionado com sucesso'})
+            return res.status (200).json ({msg: 'comentario adicionado com sucesso'});
         }
 
         return res.status (405).json ({erro: 'Metodo informado nao e valido'});
     }catch(e){
         console.log (e);
-        return res.status (500).json ({erro: 'Ocorreu ao adicionar comentarios'});
+        return res.status (500).json ({erro: 'Ocorreu erro ao adicionar comentarios'});
     }
 }
 
