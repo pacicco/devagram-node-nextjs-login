@@ -5,6 +5,7 @@ import { conectarMongoDB } from "../../middlewares/conectarMongoDB";
 import { UsuarioModel } from "../../models/usuarioModels";
 import { PublicacaoModel } from "../../models/PublicacacoModel";
 import { SeguidorModel } from "../../models/SeguidorModel";
+import { PoliticaCORS } from "../../middlewares/politicaCORS";
 
 const feedEndpoint = async (req: NextApiRequest, res: NextApiResponse<RespostaPadraoMsg | any>) => {
     try {
@@ -66,4 +67,4 @@ const feedEndpoint = async (req: NextApiRequest, res: NextApiResponse<RespostaPa
 
 }
 
-export default validarTokenJWT(conectarMongoDB(feedEndpoint));
+export default PoliticaCORS (validarTokenJWT(conectarMongoDB(feedEndpoint)));
