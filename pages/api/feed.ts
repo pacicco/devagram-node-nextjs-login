@@ -45,7 +45,7 @@ const feedEndpoint = async (req: NextApiRequest, res: NextApiResponse<RespostaPa
                 for (const publicacao of publicacoes) {
                     const usuarioDaPublicacao = await UsuarioModel.findById(publicacao.idUsuario);
                     if (usuarioDaPublicacao) {
-                        const final { ...publicacao._doc, usuario: {
+                        const final = { ...publicacao._doc, usuario: {
                             nome : usuarioDaPublicacao.nome,
                             avatar : usuarioDaPublicacao.avatar
 
